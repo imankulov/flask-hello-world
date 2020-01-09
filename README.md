@@ -1,6 +1,6 @@
 # Flask Hello World
 
-![](https://github.com/imankulov/flask-hello-world/workflows/Tests/badge.svg)
+![](https://github.com/imankulov/flask-hello-world/workflows/tests/badge.svg)
 
 Hello World Flask Application, served with uwsgi
 
