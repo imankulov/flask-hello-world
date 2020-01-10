@@ -6,6 +6,8 @@ Hello World Flask Application, served with uwsgi
 
 ## Getting Started
 
+Make sure you have poetry installed.
+
 Clone the repo.
 
 ```
@@ -16,18 +18,29 @@ cd flask-hello-world
 Install all the dependencies.
 
 ```
-make deps
+poetry install
 ```
 
-Run tests with tox
+Run tests with pytest
 
 ```
-tox -e py38
-tox -e mypy
+poetry run pytest
 ```
 
 Run the application
 
 ```
-uwsgi --ini=uwsgi.conf
+poetry run uwsgi --ini=uwsgi.conf
+```
+
+## Building a Docker image
+
+```
+docker build -t flask-hello-world .
+```
+
+## Running the image
+
+```
+docker run --rm -i -p 5000:5000  -t flask-hello-world
 ```
