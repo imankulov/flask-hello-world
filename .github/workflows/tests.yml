@@ -3,10 +3,12 @@ name: tests
 on: [push]
 
 jobs:
-  build:
+  build-test-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
@@ -18,8 +20,16 @@ jobs:
           python get-poetry.py --yes
           rm -f get-poetry.py
           $HOME/.poetry/bin/poetry install
-
+      runs-on: ubuntu-latest
       - name: Test with pytest
         run: |
           set -ex
           $HOME/.poetry/bin/poetry run pytest
+      - name: Build docker image
+        run: |
+          set -ex
+          docker build -t flask-hello-world .
+      - name: Deploy image to GitHub packages
+        uses: matootie/github-docker@v2.0.0
+        with:
+          accessToken: ${{ secrets.GITHUB_TOKEN }}
