@@ -24,10 +24,6 @@ jobs:
         run: |
           set -ex
           $HOME/.poetry/bin/poetry run pytest
-      - name: Build docker image
-        run: |
-          set -ex
-          docker build -t flask-hello-world .
       - name: Deploy image to GitHub packages
         uses: matootie/github-docker@v2.0.0
         with:
