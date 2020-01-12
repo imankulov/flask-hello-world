@@ -20,7 +20,6 @@ jobs:
           python get-poetry.py --yes
           rm -f get-poetry.py
           $HOME/.poetry/bin/poetry install
-      runs-on: ubuntu-latest
       - name: Test with pytest
         run: |
           set -ex
