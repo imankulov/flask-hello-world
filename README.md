@@ -44,3 +44,9 @@ docker build -t flask-hello-world .
 ```
 docker run --rm -i -p 5000:5000  -t flask-hello-world
 ```
+
+## Running the app from GPR
+
+```
+docker run --rm  -p 5000:5000 docker.pkg.github.com/imankulov/flask-hello-world/flask-hello-world:master
+```
