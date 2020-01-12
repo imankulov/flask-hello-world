@@ -32,4 +32,4 @@ jobs:
       - name: Deploy image to GitHub packages
         uses: matootie/github-docker@v2.0.0
         with:
-          accessToken: ${{ secrets.GITHUB_TOKEN }}
+          accessToken: "${{ secrets.GITHUB_TOKEN }}"
