@@ -1,4 +1,4 @@
 .vscode
-.tox
 .mypy_cache
+.pytest_cache
 dist
