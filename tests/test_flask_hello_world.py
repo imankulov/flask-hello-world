@@ -10,5 +10,5 @@ def client():
 
 
 def test_foo(client):
-    resp = client.get("/")
-    assert resp.data == b"Hello, World!"
+    resp = client.get("/").json
+    assert resp["message"] == "Hello, world"
