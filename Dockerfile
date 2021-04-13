@@ -3,7 +3,7 @@
 # instructions.
 #
 # Base image
-FROM python:3.8.1-alpine3.11 as base
+FROM python:3.9 as base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
@@ -17,10 +17,9 @@ FROM base as builder
 ENV PIP_DEFAULT_TIMEOUT=100 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
-    POETRY_VERSION=1.0.0 \
+    POETRY_VERSION=1.1.5 \
     POETRY_VIRTUALENVS_CREATE=false
 
-RUN apk add --no-cache gcc libffi-dev musl-dev libressl-dev
 RUN pip install "poetry==$POETRY_VERSION"
 RUN python -m venv /venv
 
@@ -35,7 +34,6 @@ FROM base as final
 
 EXPOSE 5000
 ENV PATH=/venv/bin/:$PATH
-RUN apk add --no-cache libffi libressl
 COPY --from=builder /venv /venv
 COPY uwsgi.conf ./
 CMD ["uwsgi", "--ini", "uwsgi.conf"]
