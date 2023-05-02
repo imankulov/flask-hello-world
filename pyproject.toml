@@ -16,7 +16,7 @@ include = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-flask = "^1.1.2"
+flask = "^2.3.2"
 uwsgi = "^2.0.19"
 
 [tool.poetry.dev-dependencies]
